@@ -46,23 +46,12 @@ PostRouter.get("/", (req, res) => {
 
 // Get by id
 PostRouter.get("/id=:id", (req, res) => {
-    // PostModel.findById(req.params.id, (err, data) => {
-    //     if(err) res.status(500).json({
-    //         success: 0,
-    //         message: err
-    //     });
-    //     else res.json(data);
-    // });
     PostModel.findById(req.params.id, {})
     .populate({
         path: "author",
         select: {
             username: 1,
             image: 1,
-            // password: 0,
-            // email: 0,
-            // phone: 0,
-            // chỉ chọn tất cả 1 hoặc tất cả 0 || 1 - hiện 0 - ẩn
             fullname: 1
         }
     })
@@ -74,19 +63,6 @@ PostRouter.get("/id=:id", (req, res) => {
         else res.json(data);
     });
 });
-
-// PostRouter.put('/:id/like', (req, res) => {
-//     PostModel.findByIdAndUpdate(req.params.id, {$set:req.body}, (err, data) => {
-//         if(err) {
-//             res.status(500).json({
-//                 success: 0,
-//                 message: err
-//             });
-//         }else{
-
-//         }
-//     });
-// });
 
 
 PostRouter.put('/update=:id', (req,res) => {
@@ -131,17 +107,12 @@ PostRouter.delete('/delete=:id',(req,res)=>{
 PostRouter.get('/search=:keyword', (req, res) => {
     var dataResponse = [];
     const key = req.params.keyword;
-    console.log(key);
     PostModel.find({})
     .populate({
         path: "author",
         select: {
             username: 1,
             image: 1,
-            // password: 0,
-            // email: 0,
-            // phone: 0,
-            // chỉ chọn tất cả 1 hoặc tất cả 0 || 1 - hiện 0 - ẩn
             fullname: 1
         }
     })

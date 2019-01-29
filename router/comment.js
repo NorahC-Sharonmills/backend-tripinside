@@ -2,13 +2,8 @@ const express = require("express");
 const WeatherRouter = express.Router();
 const requestt = require('request');
 
-// const CommentModel = require("../models/comment");
-
 //TODO: CRUD for post
 //"/api/weather"
-
-// require('es6-promise').polyfill();
-// require('isomorphic-fetch');
 
 const url = "http://api.openweathermap.org/data/2.5/forecast?q=";
 const apikey = ",vn&cnt=40&APPID=5ac79f3ec738990c78a7222ab7680dc4";
